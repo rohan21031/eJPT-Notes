@@ -13,8 +13,11 @@
  - enumerate shares --> $ nmap -p445 --script smb-enum-shares 10.10.10.10
  - $ nmap -p445 --script smb-enum-shares --script-args smbusername=administrator,smbpassword=smbserver_771 10.10.10.10 
  - enumerate users  --> $ nmap -p445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=smbserver_771 10.10.10.10 
+ - bruteforce smb --> nmap --script smb-brute --script-args smbuser=path/to/usernames.txt,smbpass=path/to/passwords.txt -p 445 <target_ip>
+ - bruteforce --> hydra -l student -P /usr/share/merasploit-framework/data/wordlists/unix_passwords.txt 10.10.10.10 smb
+ - use via smbclient --> smbclient //192.168.1.100/shared_folder -U guest
  - check the Nmap Scripts documentation for more SMB scripts that can be useful for penetration testing
- - tool used - SMBMap
+######  Tool used - SMBMap
  - $ smbmap -u guest -p "" -ed . -H 10.10.10.10
  - running a command using SMBMap --> $ smbmap -H 10.10.10.10 -u administrator -p smbserver_771 -x 'ipconfig'
  - check the -help and documentation for more commands  
@@ -25,7 +28,7 @@
 - Samba is the SMB version of the Linux
 - can also use Metasploit  by using --> auxiliary(scanner/smb/smb_version)
 - connect via smbclient and rpcclient --> These tools are preinstalled in Kali Linux
-- enum4linux  --> great tool
+- enum4linux  -a 10.10.10.10 --> great tool
 
 #### FTP
 - File Transfer Protocol
