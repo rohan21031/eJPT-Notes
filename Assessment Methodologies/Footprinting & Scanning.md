@@ -37,3 +37,9 @@
     -   To scan all ports:  `autorecon -p- 192.168.0.1`
     -   To scan a single port:  `autorecon -p 22 192.168.1.1`
     -   To scan a range of ports:  `autorecon -p 1-100 192.168.1.1`
+
+nmap <scan types> <options> <target> 
+nmap -T4 -v -sC -sV -Pn 10.10.129.94 
+nmap -p- -T4 --min-rate 5000 -n -Pn -sC 10.10.207.21 
+nmap -p- -T4 --min-rate 5000 -n -Pn -A -v -sC 10.10.64.24 
+nmap --script <script name> -p<port> <host> 

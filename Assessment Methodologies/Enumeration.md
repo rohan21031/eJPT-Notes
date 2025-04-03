@@ -1,43 +1,6 @@
 # Enumeration
 ### Enumerating servers and services
 ##### ***Note: the 10.10.10.10 IP address is used as an example here and you can change it to your desired IP address.*** 
-#### SMB:
- - Windows implementation of file share
- - Server Message Block
- - port 445
- - smb enumeration using Nmap Scripts
- - $ nmap -p 445 --script smb-protocols 10.10.10.10
- - $ nmap -p445 --script smb-security-mode 10.10.10.10
- - $ nmap -p445 --script smb-enum-sessions 10.10.10.10
- - $ nmap -p445 --script smb-enum-sessions --script-args smbusername=administrator,smbpassword=smbserver_771 10.10.10.10
- - enumerate shares --> $ nmap -p445 --script smb-enum-shares 10.10.10.10
- - $ nmap -p445 --script smb-enum-shares --script-args smbusername=administrator,smbpassword=smbserver_771 10.10.10.10 
- - enumerate users  --> $ nmap -p445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=smbserver_771 10.10.10.10 
- - bruteforce smb --> nmap --script smb-brute --script-args smbuser=path/to/usernames.txt,smbpass=path/to/passwords.txt -p 445 <target_ip>
- - bruteforce --> hydra -l student -P /usr/share/merasploit-framework/data/wordlists/unix_passwords.txt 10.10.10.10 smb
- - use via smbclient --> smbclient //192.168.1.100/shared_folder -U guest
- - check the Nmap Scripts documentation for more SMB scripts that can be useful for penetration testing
-######  Tool used - SMBMap
- - $ smbmap -u guest -p "" -ed . -H 10.10.10.10
- - running a command using SMBMap --> $ smbmap -H 10.10.10.10 -u administrator -p smbserver_771 -x 'ipconfig'
- - check the -help and documentation for more commands  
- - you can connect, enumerate, upload, and download files using the SMBMap 
- - $ smbmap -H 10.10.10.10 -u administrator -p smbserver_771 --download 'c$\flag.txt'
-
-#### SMB - Samba
-- Samba is the SMB version of the Linux
-- can also use Metasploit  by using --> auxiliary(scanner/smb/smb_version)
-- connect via smbclient and rpcclient --> These tools are preinstalled in Kali Linux
-- enum4linux  -a 10.10.10.10 --> great tool
-
-#### FTP
-- File Transfer Protocol
-- port 21
-- check for usernames using hydra --> $ hydra -L /usr/share/merasploit-framework/data/wordlists/common_users.txt -P /usr/share/merasploit-framework/data/wordlists/unix_passwords.txt 10.10.10.10 ftp
-- we can also do it via Nmap Scripts --> nmap 10.10.10.10 --script ftp-brute --script-args userdb=/root/users -p 21  --> users in this argument is the list of users 
-- connet via ftp  --> ftp 10.10.10.10
-- anonymous Login --> nmap 10.10.10.10 -p 21 --script ftp-anon <--> If anonymous login was allowed, connect using FTP and enter anonymous for the user and no password
-
 #### SSH
 - Secure Shell
 - port 22
@@ -52,7 +15,7 @@
 - we can also use Metasploit to perform a brute force 
 - metasploit command --> use auxiliary/scanner/ssh/ssh_login -- configure the options and run
 
-#### MSSQL -- Windows version
+#### MySQL -- Windows version
 - Nmap script fo MSSQL --> nmap 10.10.10.10 -p 1433 --script ms-sql-info 
 - $ nmap 10.10.10.10 -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433
 - $ nmap 10.10.10.10 -p 1433 --script ms-sql-brute --script-args userdb=< **users list path**>,password=< **pass list path**>

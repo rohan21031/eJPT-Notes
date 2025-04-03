@@ -39,9 +39,11 @@
 - DNS Zone Transfer
     - tools → dnsenum & dig
     - usage → dnsenum zonetransfer.me
+    - For doing DNS zonetransfer: `dig axfr <nameserver> domain`
+	    - dig axfr @nsztm1.digi.ninja zonetransfer.me
     - file - /etc/hosts
-    - fierce -dns target.com
+    - fierce -dns target.com --- gives ip
 - Host Discovery with Nmap
-    - usage → sudo nmap -sn <target IP>/24
+    - usage → `sudo nmap -sn <target IP>/24`
 - Port Scanning with Nmap
     - nmap -p <port numbers you want to scan> <target IP>
