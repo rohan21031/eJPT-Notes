@@ -7,3 +7,5 @@
 * Post Exploitation: Meterpreter
 * Privilege Escalation: Post Exploitation Modules & Meterpreter
 * Maintaining and Persistent Access: Post Exploitation Modules & Persistence
+#### Automation Tool
+- metasploit-autopawn
